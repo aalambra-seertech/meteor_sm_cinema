@@ -14,50 +14,70 @@ import { Movies } from '../../api/movies.js';
 class App extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			movieOpts: [],
+			cinemaOpts: null
+		}
+	}
+	startMeteorSubscriptions(){
+		Meteor.subscribe('movies');
+	}
+
+	logChange(val){
+		this.refs.movies.value
+		console.log("Selected: " + $('#movies').val());
+	}
+
+	onSelectMovie(){
+		console.log($('#movies').val());
+	}
+
+	componentDidMount(){
+		var me = this;
+		
+		Meteor.call('movies.getMovies', function(error, result){
+			console.log('result '+JSON.stringify(result));
+			me.setState({
+				movieOpts: result
+			});
+		});
 	}
 
 	render() {
+		var movieOptArr = this.state.movieOpts.map(function(item, i){
+			return (<option value={item.value} key={i}>{item.label}</option>);
+		});
+
 		return (
 			<div className="container">
 				<header>
-				  	<h1>Watch a movie now</h1>
-
-				  	<AccountsUIWrapper />
-
-				  	<br />
-				  	<br />
-				  	<p>Select Movie:</p>
-				  	{
-				  		this.props.movies.length > 0 ?
-				  		<Select
-					  name="movies"
-					  id= "movies"
-					  value="12"
-					  options={this.props.movies}
-					/> : ''
-				  	}
-				  	
+				  	<h1>sm cinema</h1>
 				</header>
 
-				
+				<br />
+				<br />
+				<p>Select Movie:</p>
+				<select id="movies" ref="movies" onChange={this.onSelectMovie}>
+					{movieOptArr}
+				</select>
 			</div>
 		);
 	}
 }
 
-App.propTypes = {
-	movies: PropTypes.array.isRequired,
-};
+export default App;
 
+/*
 export default createContainer(() => {
 	Meteor.subscribe('movies');
 
 	let movies = Movies.find({}, { sort: { createdAt: -1 } }).fetch();
 	let moviesmap = movies.map(function(item){
-		return {"value": item.id, "label": item.name}
+		return {"value": item["_id"]["_str"], "label": item.name}
 	});
 
 	return {
 		movies: moviesmap,
 	};
 }, App);
+*/

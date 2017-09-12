@@ -2,11 +2,12 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
-export const Movies = new Mongo.Collection('movies');
+export const Location = new Mongo.Collection('locations');
+export const Schedule = new Mongo.Collection('schedule');
 
 if (Meteor.isServer) {
-	Meteor.publish('movies', function moviesPublication() {
-		return Movies.find({});
+	Meteor.publish('location', function locationPublication() {
+		return Location.find({});
 	});
 }
 
