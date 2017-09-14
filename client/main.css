@@ -15,10 +15,115 @@ body {
   font-size: 14px;
 }
  
-.container {
-  max-width: 600px;
-  padding: 1em;
-  margin: 1em auto;
+.page-container {
+  max-width: 700px;
+  padding: 1em 2em 3em;
+  margin: 2em auto;
   min-height: 100%;
-  background: #ABDF9C;
+  color: white;
+  background: #337ab7;
+}
+
+.page-not-found{
+  width: 100%;
+  text-align: center;
+  color: #337ab7;
+}
+
+.choose-movie-label{
+  margin-top: 1em;
+  font-size: 1.25em;
+  margin-bottom: 10px;
+}
+
+.movie-item{
+  width: 100%;
+  height: 250px;
+  background: #F4F4F4;
+  margin: 0em 0em 2em;
+  border-radius: 5px;
+  padding-bottom: 1em;
+}
+
+.movie-item img{
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.movie-item-dtl{
+  padding: 10px;
+  width: 100%;
+}
+
+.movie-item-title{
+  color: #232549;
+  font-size: 1.25em;
+  margin:0px;
+}
+
+.movie-item-rating{
+  color: #575757;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin:0px;
+}
+
+.cs-movie-item-image{
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.cs-movie-item-rating{
+  width: 100%;
+  text-align: center;
+  color: #F4F4F4;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 0.25em 0px;
+}
+
+.cs-movie-item-title{
+  width: 100%;
+  text-align: left;
+  color: #FFFFFF;
+  font-size: 1.75em;
+  font-weight: bold;
+  margin: 0.25em 0px;
+}
+
+.cs-movie-item-synopsis{
+  width: 100%;
+  text-align: left;
+  color: #C4C4E4;
+  font-size: 1em;
+  margin: 0.1em 0px;
+}
+
+.cs-select{
+  width: 100%;
+  height: 25px;
+  background: #F4F4F4;
+  text-align: left;
+  color: #232549;
+  font-size: 1.1em;
+  margin: 0.1em 0px;
+}
+
+button{
+  background: #C4C4E4;
+  color: #232549;
+  font-size: 1.1em;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+}
+
+.summary h4{
+  color: #F4F4F4;
+  font-weight: bold;
 }

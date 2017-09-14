@@ -1,21 +1,20 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
-
-export const Movies = new Mongo.Collection('movies');
-
-if (Meteor.isServer) {
-	Meteor.publish('movies', function moviesPublication() {
-		return Movies.find({});
-	});
-}
+import { Movies } from './collection_list.js';
 
 Meteor.methods({
 	'movies.getMovies'(){
-		let movies = Movies.find({}, {}).fetch();
+		return Movies.find({}, {}).fetch();
+		/*
 		return movies.map(function(item){
 			return {"value": item["_id"]["_str"], "label": item.name}
 		});
+		*/
+	},
+	'movies.getMovie'(id){
+		let oid = new Meteor.Collection.ObjectID(id);
+		return Movies.findOne({"_id": oid});
 	}
 });
 
