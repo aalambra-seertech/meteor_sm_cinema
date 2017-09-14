@@ -65,7 +65,7 @@ class ChooseSchedule extends Component {
 		});
 
 		var scheduleOptItems = this.state.scheduleOpts.map(function(item,i){
-			return (<option key={i} value={item.value}>{item.label}</option>);
+			return (<option key={i} value={item.value} disabled={item.disabled}>{item.label}</option>);
 		});
 
 		var seatOptItems = [1,2,3,4,5,6,7,8,9,10].map(function(item){

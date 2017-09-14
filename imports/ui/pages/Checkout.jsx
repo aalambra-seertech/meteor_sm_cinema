@@ -10,10 +10,15 @@ class Checkout extends Component {
 		this.state = {
 			summary: null,
 		};
+		this.onCheckoutClick = this.onCheckoutClick.bind(this);
 	}
 
 	startMeteorSubscriptions(){
 		Meteor.subscribe('schedule');
+	}
+
+	onCheckoutClick(){
+
 	}
 	
 	componentDidMount(){
@@ -44,6 +49,7 @@ class Checkout extends Component {
 						<p><span>Time:</span>&nbsp;&nbsp;&nbsp;<span>{summary==null? '' : summary.time}</span></p>
 						<p><span>No. of Seat(s):</span>&nbsp;&nbsp;&nbsp;<span>{summary==null? '' : summary.seats}</span></p>
 						<p><span>Total Price:</span>&nbsp;&nbsp;&nbsp;<span>{summary==null? '' : 'Php '+summary.total_price}</span></p>
+						<button onClick={this.onCheckoutClick}>buy</button>
 					</div>
 				</div>
 			</div>

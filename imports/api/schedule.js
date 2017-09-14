@@ -25,16 +25,19 @@ Meteor.methods({
 		});
 		let scheds = Schedule.find({'movie_id': id, 'loc': loc}).fetch();
 		return scheds.map(function(item){
+			let disabled = Number(item.slots)<=Number(item.occupied);
 			let label = cinema_map[item.cinema] + ' - ' + moment.utc(item.time).format('MMM d, YYYY h:mm a');
 			return {
 				"value": item["_id"]["_str"],
 				"loc": loc,
+				"disabled": disabled,
 				"label": label
 			}
 		});
 
 	},
 	'schedule.getSummary'(schedule_id, seat){
+
 		let oid = new Meteor.Collection.ObjectID(schedule_id);
 		let sched = Schedule.findOne({"_id": oid});
 		let cinema = Cinema.findOne({'_id': sched.cinema});
@@ -50,6 +53,9 @@ Meteor.methods({
 			'seats': seat,
 			'total_price': total
 		}
+	},
+	'schedule.processOrder'(){
+
 	}
 });
 
